@@ -12,6 +12,7 @@ This repository contains the code I created while researching the use of NLP as 
 ```python
 from body_parser import BodyParser 
 from models import EmailInfo, email_info_factory
+from dataclasses import fields
 import mailbox
 
 # Show body as a string for all Content Types
@@ -28,7 +29,7 @@ def get_email_info(some_mbox_obj: mailbox.mbox) -> EmailInfo:
 def display(email_info: EmailInfo):
    for names in EmailInfo.attachment_data.attachment_names:
        print(f'-> { name }')
-   for field in fields(email_info.auth_results)
+   for field in fields(email_info.auth_results):
        print(f'{ field.name } { getattr(email_info.auth_results, field.name) }')
 
 ```
